@@ -1,2 +1,2 @@
 # echo
-AI generated content feed for maximum rat-wheeling
+AI generated content feed for maximum rat-wheeling 🐀
