@@ -3,3 +3,4 @@ llama-2-13b*/
 llama-2-70b*/
 .DS_Store
 *.pyc
+**/__pycache__/
