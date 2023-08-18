@@ -17,10 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from .views import index
+from django.views.generic import TemplateView
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("posts/", include("posts.urls")),
-    path("", index, name="index"),
+    path('', TemplateView.as_view(template_name="index.html")),
+    path('accounts/', include('allauth.urls')),
+    path('logout', LogoutView.as_view()),
     path("", include("django_nextjs.urls")),
 ]
