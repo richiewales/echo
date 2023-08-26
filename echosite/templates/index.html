@@ -8,9 +8,20 @@
   <a href="{% provider_login_url 'google' %}">Login With Google</a>
 {% endif %}
 
-<textarea rows="5" cols="40" id="post_text"></textarea>
+Topics
+<br>
+<textarea rows="5" cols="40" id="topics"></textarea>
+<br>
 
 <button value="" onclick="generatePost()">Generate Post</button>
+
+<br>
+<br>
+<br>
+
+Generated Post
+<br>
+<textarea rows="5" cols="40" id="post_text"></textarea>
 </body>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -22,7 +33,8 @@
             type: 'POST',
             url: url,
             data: {
-            csrfmiddlewaretoken: '{{ csrf_token }}'
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                topics: $("textarea#topics").val()
             },
             success: function(response) {
                 prompt = response['prompt'];
