@@ -59,16 +59,6 @@ Generated Post
                 csrfmiddlewaretoken: '{{ csrf_token }}',
                 topics: $("textarea#topics").val()
             },
-            xhr: function () {
-                var xhr = new window.XMLHttpRequest();
-                xhr.upload.addEventListener("progress", function(evt) {
-                if (evt.lengthComputable) {
-                    var percentComplete = (evt.loaded / evt.total) * 100;
-                    $("#loading-bar").css("width", percentComplete + "%");
-                }
-                }, false);
-                return xhr;
-            },
             success: function(response) {
                 // Hide loading bar
                 $("#loading-spinner").hide();
