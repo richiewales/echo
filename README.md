@@ -19,5 +19,11 @@ You should have the dir structure:
 echo/echosite/models/Llama-2-7B-Chat-GGML
 ```
 
+## Get Llama Metal GPU support (macOS)
+```
+pip uninstall llama-cpp-python -y
+CMAKE_ARGS="-DLLAMA_METAL=on" FORCE_CMAKE=1 pip install -U llama-cpp-python==0.1.68 --no-cache-dir
+```
+
 ## Mascot
 ![image](echo-chan.png)
