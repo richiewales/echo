@@ -25,5 +25,17 @@ pip uninstall llama-cpp-python -y
 CMAKE_ARGS="-DLLAMA_METAL=on" FORCE_CMAKE=1 pip install -U llama-cpp-python==0.1.68 --no-cache-dir
 ```
 
+## Supported Topics
+1. anime
+1. soccer
+1. music
+1. elon musk
+1. travel
+1. video games
+1. ai
+1. cats
+1. dogs
+1. fashion
+
 ## Mascot
 ![image](echo-chan.png)
