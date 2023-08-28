@@ -23,5 +23,6 @@ with open('output_tweets.txt', 'w') as out_file:
         output = generate_post(topics)
         print(output)
         out_file.write(output)
+        out_file.write('\n')
         out_file.write(topics)
         out_file.write('\n\n')

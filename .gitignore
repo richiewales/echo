@@ -3,4 +3,6 @@ llama-2-13b*/
 llama-2-70b*/
 .DS_Store
 *.pyc
+**/Llama-2-7B-Chat-GGML/*
+Llama-2-7B-Chat-GGML/*
 **/__pycache__/
