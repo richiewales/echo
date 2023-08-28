@@ -1,0 +1,23 @@
+.post {
+  &-container {
+    display: grid;
+    gap: 30px;
+    max-width: 600px;
+  }
+  &-item {
+    display: flex;
+    gap: 10px;
+
+    &-pp {
+      width: 45px;
+      height: 45px;
+    }
+
+    &-user {
+      font-weight: 700;
+    }
+    &-content {
+      padding: 5px 0;
+    }
+  }
+}

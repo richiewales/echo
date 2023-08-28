@@ -1,0 +1,21 @@
+.nav {
+  border-right: 1px #cab1bd solid;
+  padding: 0 30px;
+  &-ul {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 0 30px;
+    position: sticky;
+    top: 0;
+
+    &-li {
+      list-style-type: none;
+
+      &-a {
+        font-size: 20px;
+        padding: 10px 20px;
+      }
+    }
+  }
+}

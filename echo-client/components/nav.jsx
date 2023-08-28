@@ -19,8 +19,8 @@ function Nav() {
 
     return (
         <nav className="nav">
-            <ul className="nav-ul">
-                {navData.map ((item, index) => (
+            <ul className="nav-ul main-padding">
+                {navData.map((item, index) => (
                     <li key={index} className="nav-ul-li">
                         <a href={item.href} className="nav-ul-li-a">{item.text}</a>
                     </li>

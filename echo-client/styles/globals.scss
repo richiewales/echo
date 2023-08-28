@@ -1,5 +1,8 @@
+// Pages
 @import "./home.scss";
+// Components
 @import "./components/nav.scss";
+@import "./components/posts.scss";
 
 html,
 body {
@@ -18,16 +21,30 @@ a {
   margin: 0;
 }
 
+img {
+  display: block;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: #dff3e4;
+    background: #171738;
   }
 }
 
+.main {
+  &-layout {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 25px;
+  }
+  &-padding {
+    padding: 25px 0;
+  }
+}
 .container {
   display: grid;
   place-items: center;

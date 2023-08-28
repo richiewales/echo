@@ -5,9 +5,6 @@ import Nav from "../components/nav.jsx";
 import PostContainer from "../components/posts/post-container.jsx";
 
 export default function Home() {
-
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-
   const [itemData, setItemData] = useState(null);
 
   useEffect(() => {
@@ -16,9 +13,11 @@ export default function Home() {
       const data = await response.json();
       setItemData(data);
     }
-
     fetchData();
   }, []);
+
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
 
   return (
     <div>
@@ -28,9 +27,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container">
-        <div className="home-layout">
+        <div className="main-layout">
           <Nav />
-          {itemData && <PostContainer itemData={itemData} />}
+          <div className="home-layout main-padding">
+            <h1>Home</h1>
+            {itemData && <PostContainer itemData={itemData} />}
+          </div>
         </div>
       </main>
     </div>
