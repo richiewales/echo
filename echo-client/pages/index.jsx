@@ -18,7 +18,7 @@ export default function Home() {
     }
 
     fetchData();
-  }, [itemData]);
+  }, []);
 
   return (
     <div>
@@ -30,7 +30,7 @@ export default function Home() {
       <main className="container">
         <div className="home-layout">
           <Nav />
-          <PostContainer itemData={itemData} />
+          {itemData && <PostContainer itemData={itemData} />}
         </div>
       </main>
     </div>
