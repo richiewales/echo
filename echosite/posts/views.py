@@ -11,7 +11,7 @@ from .models import Post, User
 from django.core.serializers import serialize
 
 # Create SQS client
-sqs = boto3.client('sqs')
+sqs = boto3.client('sqs', region_name='us-east-2')
 pending_queue_url = os.environ['SQS_PENDING_URL']
 
 # Create your views here.
@@ -42,7 +42,7 @@ def generate_post(request):
 def consume_posts(request):
     # Create SQS client
     consumed_msgs = 0
-    sqs = boto3.client('sqs')
+    sqs = boto3.client('sqs', region_name='us-east-2')
     completed_queue_url = os.environ['SQS_COMPLETED_URL']
     response = sqs.receive_message(
         AttributeNames=['CreatedTimestamp'],
