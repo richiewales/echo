@@ -9,9 +9,10 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('/api/hello');
+      const response = await fetch('http://127.0.0.1:8000/posts/get-posts');
       const data = await response.json();
-      setItemData(data);
+      
+      setItemData(JSON.parse(data));
     }
     fetchData();
   }, []);

@@ -26,6 +26,11 @@ SECRET_KEY = 'django-insecure-c=2xg3ro$icekx3sozcx$k=zdv28k2obn+@4kj6wreq2i^v*c@
 DEBUG = True
 
 ALLOWED_HOSTS = ['3.128.221.239', '127.0.0.1']
+
+CORS_ALLOWED_ORIGINS = ['http://127.0.0.1']
+CORS_ALLOW_CREDENTIALS = False
+CORS_ORIGIN_ALLOW_ALL = True
+
 APPEND_SLASH = False
 
 # Application definition
@@ -42,7 +47,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'posts'
+    'posts',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'echosite.urls'
