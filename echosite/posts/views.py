@@ -95,5 +95,5 @@ def consume_posts(request):
 def get_posts(request):
     recent_100_posts = Post.objects.all()[:100]
     print(recent_100_posts)
-    serialized_data = serialize("json", recent_100_posts)
-    return HttpResponse(serialized_data)
+    serialized_data = serialize("json", recent_100_posts, use_natural_foreign_keys=True)
+    return JsonResponse(serialized_data, safe=False)
