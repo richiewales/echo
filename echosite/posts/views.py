@@ -75,6 +75,9 @@ def consume_posts(request):
 
             # Add to DB
             new_post = Post()
+            if author_id is None:
+                # hard-coded to a known good author...
+                author_id = 2
             author = User.objects.get_or_create(pk=author_id)
             new_post.author = author[0]
             new_post.post_id = post_id
