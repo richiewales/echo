@@ -63,7 +63,7 @@ while True:
             response = sqs.send_message(
                 QueueUrl=completed_queue_url,
                 MessageBody=completed_message_json,
-                MessageGroupId='dummy',
+                MessageGroupId=post_id,
                 MessageDeduplicationId=post_id
             )
             print(response)

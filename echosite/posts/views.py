@@ -32,7 +32,7 @@ def generate_post(request):
     response = sqs.send_message(
         QueueUrl=pending_queue_url,
         MessageBody=message_json,
-        MessageGroupId='dummy',
+        MessageGroupId=post_id,
         MessageDeduplicationId=post_id
     )
     print(response)
