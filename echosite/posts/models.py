@@ -14,7 +14,7 @@ class User(models.Model):
             )
         ]
     def natural_key(self):
-        return (self.name, self.picture)
+        return (self.name, self.picture, self.author_id)
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
