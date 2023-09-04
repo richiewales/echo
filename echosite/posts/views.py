@@ -1,17 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from typing import Optional
-from llama_cpp import Llama
 from echosite.settings import BASE_DIR
-from sys import platform
 import os
+import uuid
+import boto3
+import json
 
-model_dir = 'Llama-2-7B-Chat-GGML'
-model_file = 'llama-2-7b-chat.ggmlv3.q4_0.bin'
-n_gpu_layers = 0
-
-if platform == 'darwin':
-    n_gpu_layers = 1
+# Create SQS client
+sqs = boto3.client('sqs')
+pending_queue_url = os.environ['SQS_PENDING_URL']
 
 # Create your views here.
 def index(request):
@@ -19,7 +17,21 @@ def index(request):
 
 def generate_post(request):
     topics = ''.join(request.POST['topics'])
-    llm = Llama(model_path=os.path.join(BASE_DIR, 'models', model_dir, model_file), n_gpu_layers=n_gpu_layers)
-    output = llm("Q: Generate a tweet about {}.  A: ".format(topics), max_tokens=128, stop=["Q:", "\n"], echo=True)
-    output = output['choices'][0]['text'].split('A: ')[1]
-    return JsonResponse({'prompt': output})
+    
+    # Send message to SQS queue
+    post_id = str(uuid.uuid4())
+    message = {
+        'topics': topics,
+        'author_id': request.user.id,
+        'post_id': post_id,
+    }
+    message_json = json.dumps(message)
+    response = sqs.send_message(
+        QueueUrl=pending_queue_url,
+        MessageBody=message_json,
+        MessageGroupId='dummy',
+        MessageDeduplicationId=post_id
+    )
+    print(response)
+
+    return JsonResponse({'prompt': 'Post generation in-progress! Check back later :)'})
