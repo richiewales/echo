@@ -9,7 +9,8 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://127.0.0.1:8000/posts/get-posts');
+      // todo(kyle): Change this to localhost/127.0.0.1 if not running on EC2
+      const response = await fetch('http://3.128.221.239/posts/get-posts');
       const data = await response.json();
       
       setItemData(JSON.parse(data));
