@@ -9,8 +9,8 @@ class User(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['name', 'picture'],
-                name='unique_name_picture'
+                fields=['name', 'picture', 'author_id'],
+                name='unique_name_picture_author_id'
             )
         ]
     def natural_key(self):
