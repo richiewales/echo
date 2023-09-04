@@ -16,6 +16,7 @@ pending_queue_url = os.environ['SQS_PENDING_URL']
 
 # Create your views here.
 def index(request):
+    print('user', request.user.id)
     return HttpResponse("Hello, world. You're at the posts index.")
 
 def generate_post(request):
